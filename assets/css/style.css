@@ -1,13 +1,15 @@
 /**
- * Frontend styles for color swatches
+ * Frontend styles for color swatches and label swatches
  */
 
-.variation-colors {
+.variation-colors,
+.variation-labels {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
+/* Color Swatches Styles */
 .color-swatch {
     display: inline-block;
     width: 36px;
@@ -19,6 +21,7 @@
     border: 2px solid #e0e0e0;
     position: relative;
     transition: all 0.2s ease;
+    overflow: hidden; /* مهم: برای مخفی کردن input */
 }
 
 .color-swatch:hover {
@@ -31,14 +34,60 @@
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
-.color-swatch-input {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
+/* Label Swatches Styles */
+.label-swatch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid #e0e0e0;
+    background-color: #f7f7f7;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden; /* مهم: برای مخفی کردن input */
+    min-width: 40px;
 }
 
-.color-swatch-label {
+.label-swatch:hover {
+    border-color: #999;
+    background-color: #f1f1f1;
+    transform: translateY(-2px);
+}
+
+.label-swatch.selected {
+    border-color: #333;
+    background-color: #e6e6e6;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.label-text {
+    display: block;
+    font-weight: 500;
+    pointer-events: none; /* مهم: اجازه کلیک روی متن را می‌دهد */
+    z-index: 1;
+}
+
+/* Common Styles */
+.swatch-input {
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    visibility: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+.swatch-label {
     position: absolute;
     bottom: -25px;
     left: 50%;
@@ -47,11 +96,27 @@
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.2s ease;
+    pointer-events: none;
 }
 
-.color-swatch:hover .color-swatch-label,
-.color-swatch.selected .color-swatch-label {
+.color-swatch:hover .swatch-label,
+.color-swatch.selected .swatch-label {
     opacity: 1;
+}
+
+/* Disabled styles */
+.color-swatch.disabled,
+.label-swatch.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* مخفی کردن dropdown اصلی */
+.variation-default {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
 }
 
 /* Make swatches smaller on mobile */
@@ -61,5 +126,12 @@
         height: 30px;
         margin-right: 8px;
         margin-bottom: 8px;
+    }
+    
+    .label-swatch {
+        padding: 6px 12px;
+        font-size: 13px;
+        margin-right: 6px;
+        margin-bottom: 6px;
     }
 }
