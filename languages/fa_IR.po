@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Woocommerce Attribute Color Picker 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/MatinKhamooshi/woocommerce-attribute-color-picker\n"
 "POT-Creation-Date: 2023-01-01 12:00+0000\n"
-"PO-Revision-Date: 2025-03-22 13:27+0330\n"
+"PO-Revision-Date: 2025-03-22 13:29+0330\n"
 "Last-Translator: Matin Khamooshi\n"
 "Language-Team: Matin Khamooshi\n"
 "Language: fa_IR\n"
@@ -26,7 +26,7 @@ msgstr "افزودن فیلد انتخاب‌گر رنگ به ویژگی‌ها�
 
 #: woocommerce-attribute-color-picker.php:7
 msgid "Matin Khamooshi"
-msgstr "متین خاموشی"
+msgstr "متین خموشی"
 
 #: woocommerce-attribute-color-picker.php:25
 #: woocommerce-attribute-color-picker.php:44
