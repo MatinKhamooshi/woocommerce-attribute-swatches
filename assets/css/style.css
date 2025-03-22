@@ -1,0 +1,65 @@
+/**
+ * Frontend styles for color swatches
+ */
+
+.variation-colors {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.color-swatch {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #e0e0e0;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.color-swatch:hover {
+    border-color: #999;
+    transform: scale(1.05);
+}
+
+.color-swatch.selected {
+    border-color: #333;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.color-swatch-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.color-swatch-label {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.color-swatch:hover .color-swatch-label,
+.color-swatch.selected .color-swatch-label {
+    opacity: 1;
+}
+
+/* Make swatches smaller on mobile */
+@media (max-width: 768px) {
+    .color-swatch {
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+}

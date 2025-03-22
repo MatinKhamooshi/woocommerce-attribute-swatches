@@ -1,0 +1,20 @@
+/**
+ * Admin styles for color picker settings
+ */
+
+/* Style the color picker field */
+.term-color-wrap .wp-picker-container {
+    margin-top: 5px;
+}
+
+/* Adjust on edit term page */
+.term-color-wrap .wp-picker-container .wp-color-result {
+    margin-bottom: 0;
+}
+
+/* Make the display type dropdown more visible */
+#attribute_display_type {
+    min-width: 200px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
