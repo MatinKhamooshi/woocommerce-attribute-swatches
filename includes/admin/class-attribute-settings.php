@@ -36,6 +36,7 @@ class WCACP_Attribute_Settings {
             <select name="attribute_display_type" id="attribute_display_type">
                 <option value="default"><?php esc_html_e( 'Default', 'wc-attribute-color-picker' ); ?></option>
                 <option value="color"><?php esc_html_e( 'Color', 'wc-attribute-color-picker' ); ?></option>
+                <option value="label"><?php esc_html_e( 'Label', 'wc-attribute-color-picker' ); ?></option>
             </select>
             <p class="description"><?php esc_html_e( 'Determines how this attribute is displayed on product pages.', 'wc-attribute-color-picker' ); ?></p>
         </div>
@@ -61,6 +62,7 @@ class WCACP_Attribute_Settings {
                 <select name="attribute_display_type" id="attribute_display_type">
                     <option value="default" <?php selected( $display_type, 'default' ); ?>><?php esc_html_e( 'Default', 'wc-attribute-color-picker' ); ?></option>
                     <option value="color" <?php selected( $display_type, 'color' ); ?>><?php esc_html_e( 'Color', 'wc-attribute-color-picker' ); ?></option>
+                    <option value="label" <?php selected( $display_type, 'label' ); ?>><?php esc_html_e( 'Label', 'wc-attribute-color-picker' ); ?></option>
                 </select>
                 <p class="description"><?php esc_html_e( 'Determines how this attribute is displayed on product pages.', 'wc-attribute-color-picker' ); ?></p>
             </td>

@@ -20,7 +20,7 @@ class WCACP_Variation_Swatches {
     }
     
     /**
-     * Replace dropdown with color swatches
+     * Replace dropdown with color swatches or labels
      */
     public function variation_attribute_options_html( $html, $args ) {
         // Get attribute info
@@ -35,11 +35,11 @@ class WCACP_Variation_Swatches {
         $attribute_name = str_replace( 'pa_', '', $attribute );
         $attribute_id = wc_attribute_taxonomy_id_by_name( $attribute_name );
         
-        // Check if this attribute has display type set to 'color'
+        // Check if this attribute has a special display type set
         $display_type = get_option( 'wc_attribute_display_type_' . $attribute_id, 'default' );
         
-        // Only modify if it's a color attribute
-        if ( 'color' !== $display_type ) {
+        // Only modify if it's a color or label attribute
+        if ( 'default' === $display_type ) {
             return $html; // Return original dropdown for default display type
         }
         
@@ -50,8 +50,9 @@ class WCACP_Variation_Swatches {
         $id = $args['id'] ? $args['id'] : sanitize_title( $attribute );
         $selected = $args['selected'] ? $args['selected'] : '';
         
-        // Output custom HTML for the color swatches
-        $output = '<div class="variation-colors">';
+        // Output container div based on display type
+        $container_class = 'color' === $display_type ? 'variation-colors' : 'variation-labels';
+        $output = '<div class="' . esc_attr($container_class) . '">';
         
         if ( empty( $options ) ) {
             return $html; // Return original dropdown if no options
@@ -63,24 +64,43 @@ class WCACP_Variation_Swatches {
             
             foreach ( $terms as $term ) {
                 if ( in_array( $term->slug, $options, true ) ) {
-                    $color = get_term_meta( $term->term_id, '_product_attribute_color', true );
                     $selected_class = ( $selected == $term->slug ) ? 'selected' : '';
                     
-                    // Output color swatch
-                    $output .= sprintf(
-                        '<label class="color-swatch %s" title="%s" data-value="%s" style="background-color:%s;">
-                            <input type="radio" name="%s" value="%s" %s class="color-swatch-input" />
-                            <span class="color-swatch-label">%s</span>
-                        </label>',
-                        esc_attr($selected_class),
-                        esc_attr($term->name),
-                        esc_attr($term->slug),
-                        esc_attr($color),
-                        esc_attr($name),
-                        esc_attr($term->slug),
-                        checked($selected, $term->slug, false),
-                        esc_html($term->name)
-                    );
+                    if ( 'color' === $display_type ) {
+                        // Get the color value for this term
+                        $color = get_term_meta( $term->term_id, '_product_attribute_color', true );
+                        
+                        // Output color swatch
+                        $output .= sprintf(
+                            '<label class="color-swatch %s" title="%s" data-value="%s" style="background-color:%s;">
+                                <input type="radio" name="%s" value="%s" %s class="swatch-input" />
+                                <span class="swatch-label">%s</span>
+                            </label>',
+                            esc_attr($selected_class),
+                            esc_attr($term->name),
+                            esc_attr($term->slug),
+                            esc_attr($color),
+                            esc_attr($name),
+                            esc_attr($term->slug),
+                            checked($selected, $term->slug, false),
+                            esc_html($term->name)
+                        );
+                    } else if ( 'label' === $display_type ) {
+                        // Output text label
+                        $output .= sprintf(
+                            '<label class="label-swatch %s" title="%s" data-value="%s">
+                                <input type="radio" name="%s" value="%s" %s class="swatch-input" />
+                                <span class="label-text">%s</span>
+                            </label>',
+                            esc_attr($selected_class),
+                            esc_attr($term->name),
+                            esc_attr($term->slug),
+                            esc_attr($name),
+                            esc_attr($term->slug),
+                            checked($selected, $term->slug, false),
+                            esc_html($term->name)
+                        );
+                    }
                 }
             }
         }

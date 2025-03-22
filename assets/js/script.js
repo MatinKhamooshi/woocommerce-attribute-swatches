@@ -1,5 +1,5 @@
 /**
- * Frontend scripts for color swatches
+ * Frontend scripts for color swatches and label swatches
  */
 (function($) {
     'use strict';
@@ -7,37 +7,38 @@
     // When document is ready
     $(document).ready(function() {
         // Initialize swatches functionality
-        initColorSwatches();
+        initSwatches();
         
         // Re-initialize on variation events
-        $(document).on('woocommerce_update_variation_values', initColorSwatches);
+        $(document).on('woocommerce_update_variation_values', initSwatches);
     });
     
     /**
-     * Initialize color swatches functionality
+     * Initialize swatches functionality
      */
-    function initColorSwatches() {
-        // Handle click on color swatches
-        $('.color-swatch-input').off('change').on('change', function() {
+    function initSwatches() {
+        // Handle click on swatches
+        $('.swatch-input').off('change').on('change', function() {
             var $this = $(this);
             var value = $this.val();
-            var dropdown = $this.closest('.variation-colors').next('.variation-default').find('select');
+            var $swatchContainer = $this.closest('.variation-colors, .variation-labels');
+            var dropdown = $swatchContainer.next('.variation-default').find('select');
             
             // Update dropdown value
             dropdown.val(value).trigger('change');
             
             // Update swatch selection
-            $this.closest('.variation-colors').find('.color-swatch').removeClass('selected');
-            $this.parent('.color-swatch').addClass('selected');
+            $swatchContainer.find('.color-swatch, .label-swatch').removeClass('selected');
+            $this.parent('.color-swatch, .label-swatch').addClass('selected');
         });
         
         // Highlight the selected swatch when loading the page
-        $('.variation-colors').each(function() {
+        $('.variation-colors, .variation-labels').each(function() {
             var selectedValue = $(this).next('.variation-default').find('select').val();
             if (selectedValue) {
-                $(this).find('.color-swatch-input[value="' + selectedValue + '"]')
+                $(this).find('.swatch-input[value="' + selectedValue + '"]')
                        .prop('checked', true)
-                       .parent('.color-swatch')
+                       .parent('.color-swatch, .label-swatch')
                        .addClass('selected');
             }
         });
@@ -50,12 +51,12 @@
      * Sync available variations with swatches
      */
     function syncAvailableSwatches() {
-        $('.variation-colors').each(function() {
+        $('.variation-colors, .variation-labels').each(function() {
             var $swatchContainer = $(this);
             var $defaultSelect = $swatchContainer.next('.variation-default').find('select');
             
             // Disable all swatches that correspond to unavailable options
-            $swatchContainer.find('.color-swatch').each(function() {
+            $swatchContainer.find('.color-swatch, .label-swatch').each(function() {
                 var $swatch = $(this);
                 var value = $swatch.data('value');
                 var $option = $defaultSelect.find('option[value="' + value + '"]');

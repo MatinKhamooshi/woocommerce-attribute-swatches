@@ -3,7 +3,7 @@
  * Plugin Name: Woocommerce Attribute Color Picker
  * Plugin URI:  https://github.com/MatinKhamooshi/woocommerce-attribute-color-picker
  * Description: Add color picker field to color attributes (pa_colors) in WooCommerce.
- * Version:     2.0
+ * Version:     2.1
  * Author:      Matin Khamooshi
  * Author URI:  https://matinkhamooshi.ir
  * License:     GPL2
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'WCACP_PLUGIN_FILE', __FILE__ );
 define( 'WCACP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WCACP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'WCACP_PLUGIN_VERSION', '2.0' );
+define( 'WCACP_PLUGIN_VERSION', '2.1' );
 
 /**
  * Load plugin textdomain.
