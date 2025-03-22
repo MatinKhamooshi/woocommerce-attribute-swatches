@@ -20,9 +20,48 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Load plugin textdomain.
  */
 function wcacp_load_textdomain() {
-	load_plugin_textdomain( 'wc-attribute-color-picker', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	// Make sure the locale is set properly
+	$locale = determine_locale();
+	
+	// Unload existing translations first (if any)
+	unload_textdomain( 'wc-attribute-color-picker' );
+	
+	// Load MO file with standard name (without plugin prefix)
+	$mofile = $locale . '.mo';
+	$path = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
+	
+	// Try to load from the languages directory first (WordPress/site)
+	if ( ! load_textdomain( 'wc-attribute-color-picker', WP_LANG_DIR . '/plugins/' . $mofile ) ) {
+		// Then try from the plugin's languages directory
+		load_textdomain( 'wc-attribute-color-picker', plugin_dir_path( __FILE__ ) . 'languages/' . $mofile );
+	}
 }
-add_action( 'plugins_loaded', 'wcacp_load_textdomain' );
+add_action( 'plugins_loaded', 'wcacp_load_textdomain', 1 );
+
+/**
+ * Translate plugin metadata in plugins list
+ */
+function wcacp_translate_plugin_metadata( $translated, $original, $domain ) {
+    $plugin_name = 'Woocommerce Attribute Color Picker';
+    $plugin_desc = 'Add color picker field to color attributes (pa_colors) in WooCommerce.';
+    $plugin_author = 'Matin Khamooshi';
+    
+    // Check if we're looking at our plugin data
+    if ( $original === $plugin_name && $domain !== 'wc-attribute-color-picker' ) {
+        return __( 'Woocommerce Attribute Color Picker', 'wc-attribute-color-picker' );
+    }
+    
+    if ( $original === $plugin_desc && $domain !== 'wc-attribute-color-picker' ) {
+        return __( 'Add color picker field to color attributes (pa_colors) in WooCommerce.', 'wc-attribute-color-picker' );
+    }
+    
+    if ( $original === $plugin_author && $domain !== 'wc-attribute-color-picker' ) {
+        return __( 'Matin Khamooshi', 'wc-attribute-color-picker' );
+    }
+    
+    return $translated;
+}
+add_filter( 'gettext', 'wcacp_translate_plugin_metadata', 10, 3 );
 
 /**
  * Add color picker field to add term form for taxonomy pa_colors

@@ -16,6 +16,18 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
+#: woocommerce-attribute-color-picker.php:3
+msgid "Woocommerce Attribute Color Picker"
+msgstr ""
+
+#: woocommerce-attribute-color-picker.php:5
+msgid "Add color picker field to color attributes (pa_colors) in WooCommerce."
+msgstr ""
+
+#: woocommerce-attribute-color-picker.php:7
+msgid "Matin Khamooshi"
+msgstr ""
+
 #: woocommerce-attribute-color-picker.php:25
 #: woocommerce-attribute-color-picker.php:44
 msgid "Color"
