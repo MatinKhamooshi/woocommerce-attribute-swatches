@@ -32,13 +32,13 @@ class WCACP_Attribute_Settings {
     public function add_attribute_display_type_field() {
         ?>
         <div class="form-field">
-            <label for="attribute_display_type"><?php esc_html_e( 'Display Type', 'wc-attribute-color-picker' ); ?></label>
+            <label for="attribute_display_type"><?php esc_html_e( 'Display Type', 'wc-attribute-swatches' ); ?></label>
             <select name="attribute_display_type" id="attribute_display_type">
-                <option value="default"><?php esc_html_e( 'Default', 'wc-attribute-color-picker' ); ?></option>
-                <option value="color"><?php esc_html_e( 'Color', 'wc-attribute-color-picker' ); ?></option>
-                <option value="label"><?php esc_html_e( 'Label', 'wc-attribute-color-picker' ); ?></option>
+                <option value="default"><?php esc_html_e( 'Default', 'wc-attribute-swatches' ); ?></option>
+                <option value="color"><?php esc_html_e( 'Color', 'wc-attribute-swatches' ); ?></option>
+                <option value="label"><?php esc_html_e( 'Label', 'wc-attribute-swatches' ); ?></option>
             </select>
-            <p class="description"><?php esc_html_e( 'Determines how this attribute is displayed on product pages.', 'wc-attribute-color-picker' ); ?></p>
+            <p class="description"><?php esc_html_e( 'Determines how this attribute is displayed on product pages.', 'wc-attribute-swatches' ); ?></p>
         </div>
         <?php
     }
@@ -56,15 +56,15 @@ class WCACP_Attribute_Settings {
         ?>
         <tr class="form-field">
             <th scope="row">
-                <label for="attribute_display_type"><?php esc_html_e( 'Display Type', 'wc-attribute-color-picker' ); ?></label>
+                <label for="attribute_display_type"><?php esc_html_e( 'Display Type', 'wc-attribute-swatches' ); ?></label>
             </th>
             <td>
                 <select name="attribute_display_type" id="attribute_display_type">
-                    <option value="default" <?php selected( $display_type, 'default' ); ?>><?php esc_html_e( 'Default', 'wc-attribute-color-picker' ); ?></option>
-                    <option value="color" <?php selected( $display_type, 'color' ); ?>><?php esc_html_e( 'Color', 'wc-attribute-color-picker' ); ?></option>
-                    <option value="label" <?php selected( $display_type, 'label' ); ?>><?php esc_html_e( 'Label', 'wc-attribute-color-picker' ); ?></option>
+                    <option value="default" <?php selected( $display_type, 'default' ); ?>><?php esc_html_e( 'Default', 'wc-attribute-swatches' ); ?></option>
+                    <option value="color" <?php selected( $display_type, 'color' ); ?>><?php esc_html_e( 'Color', 'wc-attribute-swatches' ); ?></option>
+                    <option value="label" <?php selected( $display_type, 'label' ); ?>><?php esc_html_e( 'Label', 'wc-attribute-swatches' ); ?></option>
                 </select>
-                <p class="description"><?php esc_html_e( 'Determines how this attribute is displayed on product pages.', 'wc-attribute-color-picker' ); ?></p>
+                <p class="description"><?php esc_html_e( 'Determines how this attribute is displayed on product pages.', 'wc-attribute-swatches' ); ?></p>
             </td>
         </tr>
         <?php

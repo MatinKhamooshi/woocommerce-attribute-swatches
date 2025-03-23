@@ -71,9 +71,9 @@ class WCACP_Term_Meta {
     public function add_color_field_to_term() {
         ?>
         <div class="form-field term-color-wrap">
-            <label for="term_color"><?php esc_html_e( 'Color', 'wc-attribute-color-picker' ); ?></label>
+            <label for="term_color"><?php esc_html_e( 'Color', 'wc-attribute-swatches' ); ?></label>
             <input name="term_color" id="term_color" type="text" value="" class="colorpicker-field" />
-            <p class="description"><?php esc_html_e( 'Select a color for this attribute.', 'wc-attribute-color-picker' ); ?></p>
+            <p class="description"><?php esc_html_e( 'Select a color for this attribute.', 'wc-attribute-swatches' ); ?></p>
         </div>
         <?php
     }
@@ -85,10 +85,10 @@ class WCACP_Term_Meta {
         $term_color = get_term_meta( $term->term_id, '_product_attribute_color', true );
         ?>
         <tr class="form-field term-color-wrap">
-            <th scope="row"><label for="term_color"><?php esc_html_e( 'Color', 'wc-attribute-color-picker' ); ?></label></th>
+            <th scope="row"><label for="term_color"><?php esc_html_e( 'Color', 'wc-attribute-swatches' ); ?></label></th>
             <td>
                 <input name="term_color" id="term_color" type="text" value="<?php echo esc_attr( $term_color ); ?>" class="colorpicker-field" />
-                <p class="description"><?php esc_html_e( 'Select a color for this attribute.', 'wc-attribute-color-picker' ); ?></p>
+                <p class="description"><?php esc_html_e( 'Select a color for this attribute.', 'wc-attribute-swatches' ); ?></p>
             </td>
         </tr>
         <?php
