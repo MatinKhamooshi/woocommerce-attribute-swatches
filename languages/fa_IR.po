@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Attribute Swatches 1.0\n"
+"Project-Id-Version: WooCommerce Attribute Swatches 3.1\n"
 "Report-Msgid-Bugs-To: https://github.com/MatinKhamooshi/woocommerce-attribute-swatches\n"
 "POT-Creation-Date: 2023-01-01 12:00+0000\n"
-"PO-Revision-Date: 2025-03-23 11:52+0330\n"
+"PO-Revision-Date: 2025-03-23 12:07+0330\n"
 "Last-Translator: Matin Khamooshi\n"
 "Language-Team: Matin Khamooshi\n"
 "Language: fa_IR\n"
@@ -60,3 +60,43 @@ msgstr "یک رنگ برای این ویژگی انتخاب کنید."
 #: woocommerce-attribute-swatches.php:84
 msgid "WooCommerce Attribute Swatches requires WooCommerce to be installed and active."
 msgstr "سواچ‌های ویژگی ووکامرس نیاز به نصب و فعال بودن ووکامرس دارد."
+
+#: includes/admin/class-settings.php:29
+msgid "Attribute Swatches Settings"
+msgstr "تنظیمات سواچ‌های ویژگی"
+
+#: includes/admin/class-settings.php:30
+msgid "Attribute Swatches"
+msgstr "سواچ‌های ویژگی"
+
+#: includes/admin/class-settings.php:57
+msgid "Settings Saved"
+msgstr "تنظیمات ذخیره شد"
+
+#: includes/admin/class-settings.php:78
+msgid "GitHub Access Token"
+msgstr "توکن دسترسی گیت‌هاب"
+
+#: includes/admin/class-settings.php:83
+msgid "Optional: Enter your GitHub personal access token to enable automatic updates from private repositories. Leave empty for public repositories."
+msgstr "اختیاری: توکن دسترسی شخصی گیت‌هاب خود را وارد کنید تا به‌روزرسانی‌های خودکار از مخازن خصوصی فعال شود. برای مخازن عمومی خالی بگذارید."
+
+#: includes/admin/class-settings.php:85
+msgid "Get a GitHub token"
+msgstr "دریافت یک توکن گیت‌هاب"
+
+#: includes/admin/class-settings.php:96
+msgid "Plugin Information"
+msgstr "اطلاعات افزونه"
+
+#: includes/admin/class-settings.php:98
+msgid "Version:"
+msgstr "نسخه:"
+
+#: includes/admin/class-settings.php:99
+msgid "GitHub Repository:"
+msgstr "مخزن گیت‌هاب:"
+
+#: includes/admin/class-settings.php:105
+msgid "This plugin checks for updates from GitHub. If you have a GitHub personal access token, enter it above to enable updates from private repositories."
+msgstr "این افزونه به‌روزرسانی‌ها را از گیت‌هاب بررسی می‌کند. اگر توکن دسترسی شخصی گیت‌هاب دارید، آن را در بالا وارد کنید تا به‌روزرسانی‌ها از مخازن خصوصی فعال شود."
