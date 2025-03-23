@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Attribute Swatches
  * Plugin URI:  https://github.com/MatinKhamooshi/woocommerce-attribute-swatches
  * Description: Add color and label swatches to WooCommerce product attributes for better variation selection experience.
- * Version:     3.2
+ * Version:     3.3
  * Author:      Matin Khamooshi
  * Author URI:  https://matinkhamooshi.ir
  * License:     GPL2
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'WCACP_PLUGIN_FILE', __FILE__ );
 define( 'WCACP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WCACP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'WCACP_PLUGIN_VERSION', '3.2' );
+define( 'WCACP_PLUGIN_VERSION', '3.3' );
 define( 'WCACP_GITHUB_USERNAME', 'MatinKhamooshi' );
 define( 'WCACP_GITHUB_REPOSITORY', 'woocommerce-attribute-swatches' );
 
@@ -97,25 +97,18 @@ function wcacp_init() {
     require_once WCACP_PLUGIN_DIR . 'includes/admin/class-term-meta.php';
     require_once WCACP_PLUGIN_DIR . 'includes/frontend/class-variation-swatches.php';
     require_once WCACP_PLUGIN_DIR . 'includes/admin/class-github-updater.php';
-    require_once WCACP_PLUGIN_DIR . 'includes/admin/class-settings.php';
     
     // Initialize classes
     new WCACP_Attribute_Settings();
     new WCACP_Term_Meta();
     new WCACP_Variation_Swatches();
-    new WCACP_Settings();
     
     // Initialize GitHub updater (only in admin)
     if ( is_admin() ) {
-        // Get GitHub token from settings
-        $github_token = get_option( 'wcacp_github_token', '' );
-        
-        // Initialize GitHub updater with token if available
         new WCACP_GitHub_Updater( 
             WCACP_PLUGIN_FILE, 
             WCACP_GITHUB_USERNAME, 
-            WCACP_GITHUB_REPOSITORY,
-            $github_token
+            WCACP_GITHUB_REPOSITORY
         );
     }
     

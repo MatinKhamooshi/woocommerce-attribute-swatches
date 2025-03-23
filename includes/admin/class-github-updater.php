@@ -17,16 +17,14 @@ class WCACP_GitHub_Updater {
     private $repository;
     private $plugin_file;
     private $github_api_result;
-    private $access_token;
     
     /**
      * Constructor
      */
-    public function __construct( $plugin_file, $github_username, $github_repository, $access_token = '' ) {
+    public function __construct( $plugin_file, $github_username, $github_repository ) {
         $this->plugin_file = $plugin_file;
         $this->username = $github_username;
         $this->repository = $github_repository;
-        $this->access_token = $access_token;
         
         add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'set_transient' ) );
         add_filter( 'plugins_api', array( $this, 'set_plugin_info' ), 10, 3 );
@@ -47,11 +45,6 @@ class WCACP_GitHub_Updater {
     private function get_repository_info() {
         if ( is_null( $this->github_api_result ) ) {
             $request_uri = sprintf( 'https://api.github.com/repos/%s/%s/releases/latest', $this->username, $this->repository );
-            
-            // If we have an access token, use it
-            if ( ! empty( $this->access_token ) ) {
-                $request_uri = add_query_arg( array( 'access_token' => $this->access_token ), $request_uri );
-            }
             
             $response = wp_remote_get( $request_uri );
             
@@ -99,11 +92,6 @@ class WCACP_GitHub_Updater {
         if ( version_compare( $version, $this->plugin_data['Version'], '>' ) ) {
             $package = $repository_info->zipball_url;
             
-            // Add access token if present
-            if ( ! empty( $this->access_token ) ) {
-                $package = add_query_arg( array( 'access_token' => $this->access_token ), $package );
-            }
-            
             $obj = new stdClass();
             $obj->slug = $this->slug;
             $obj->new_version = $version;
@@ -149,12 +137,7 @@ class WCACP_GitHub_Updater {
         );
         
         // Download URL (zip file)
-        $download_url = $repository_info->zipball_url;
-        if ( ! empty( $this->access_token ) ) {
-            $download_url = add_query_arg( array( 'access_token' => $this->access_token ), $download_url );
-        }
-        
-        $result->download_link = $download_url;
+        $result->download_link = $repository_info->zipball_url;
         
         return $result;
     }
