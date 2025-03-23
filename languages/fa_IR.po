@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WooCommerce Attribute Swatches 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/MatinKhamooshi/woocommerce-attribute-swatches\n"
 "POT-Creation-Date: 2023-01-01 12:00+0000\n"
-"PO-Revision-Date: 2023-01-01 12:00+0000\n"
+"PO-Revision-Date: 2025-03-23 11:52+0330\n"
 "Last-Translator: Matin Khamooshi\n"
 "Language-Team: Matin Khamooshi\n"
 "Language: fa_IR\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html__\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -26,7 +26,7 @@ msgstr "افزودن سواچ‌های رنگی و برچسب به ویژگی‌
 
 #: woocommerce-attribute-swatches.php:7
 msgid "Matin Khamooshi"
-msgstr "متین خاموشی"
+msgstr "متین خموشی"
 
 #: includes/admin/class-attribute-settings.php:27
 #: includes/admin/class-attribute-settings.php:48
@@ -52,10 +52,6 @@ msgstr "برچسب"
 #: includes/admin/class-attribute-settings.php:56
 msgid "Determines how this attribute is displayed on product pages."
 msgstr "تعیین می‌کند که این ویژگی چگونه در صفحات محصول نمایش داده شود."
-
-#: includes/admin/class-term-meta.php:86
-msgid "Color"
-msgstr "رنگ"
 
 #: includes/admin/class-term-meta.php:88
 msgid "Select a color for this attribute."
