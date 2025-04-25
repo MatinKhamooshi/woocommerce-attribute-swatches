@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Attribute Swatches
  * Plugin URI:  https://github.com/MatinKhamooshi/woocommerce-attribute-swatches
  * Description: Add color and label swatches to WooCommerce product attributes for better variation selection experience.
- * Version:     3.3
+ * Version:     4.0
  * Author:      Matin Khamooshi
  * Author URI:  https://matinkhamooshi.ir
  * License:     GPL2
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'WCACP_PLUGIN_FILE', __FILE__ );
 define( 'WCACP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WCACP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'WCACP_PLUGIN_VERSION', '3.3' );
+define( 'WCACP_PLUGIN_VERSION', '4.0' );
 define( 'WCACP_GITHUB_USERNAME', 'MatinKhamooshi' );
 define( 'WCACP_GITHUB_REPOSITORY', 'woocommerce-attribute-swatches' );
 

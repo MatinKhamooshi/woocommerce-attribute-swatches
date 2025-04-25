@@ -17,6 +17,8 @@ class WCACP_Variation_Swatches {
     public function __construct() {
         // Replace dropdown with color swatches for variation attributes
         add_filter( 'woocommerce_dropdown_variation_attribute_options_html', array( $this, 'variation_attribute_options_html' ), 10, 2 );
+        // Hook into WooCommerce to modify attribute display
+        add_filter( 'woocommerce_dropdown_variation_attribute_options_html', array( $this, 'display_image_attribute' ), 10, 3 );
     }
     
     /**
@@ -111,5 +113,15 @@ class WCACP_Variation_Swatches {
         $output .= '<div class="variation-default" style="display:none;">' . $html . '</div>';
         
         return $output;
+    }
+
+    // Display image for attributes of type "Image"
+    public function display_image_attribute( $html, $term, $args ) {
+        $image_id = get_term_meta( $term->term_id, 'attribute_image', true );
+        if ( $image_id ) {
+            $image_url = wp_get_attachment_url( $image_id );
+            $html = '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( $term->name ) . '" />';
+        }
+        return $html;
     }
 }

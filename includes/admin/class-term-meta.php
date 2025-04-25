@@ -62,6 +62,16 @@ class WCACP_Term_Meta {
                 // Add inline script to enable color picker
                 add_action( 'admin_print_footer_scripts', array( $this, 'print_color_picker_script' ), 25 );
             }
+            
+            // Add image field to add form
+            add_action( $taxonomy . '_add_form_fields', array( $this, 'add_image_field_to_term' ) );
+            
+            // Add image field to edit form
+            add_action( $taxonomy . '_edit_form_fields', array( $this, 'edit_image_field_to_term' ), 10, 2 );
+            
+            // Save image value
+            add_action( 'created_' . $taxonomy, array( $this, 'save_image_field_to_term' ), 10, 2 );
+            add_action( 'edited_' . $taxonomy, array( $this, 'save_image_field_to_term' ), 10, 2 );
         }
     }
     
@@ -114,5 +124,47 @@ class WCACP_Term_Meta {
         });
         </script>
         <?php
+    }
+    
+    /**
+     * Add image field to attribute add form
+     */
+    public function add_image_field_to_term( $taxonomy ) {
+        ?>
+        <div class="form-field">
+            <label for="attribute_image"><?php esc_html_e( 'Attribute Image', 'woocommerce-attribute-swatches' ); ?></label>
+            <input type="hidden" id="attribute_image" name="attribute_image" value="" />
+            <button class="button upload_image_button">Upload/Add Image</button>
+            <button class="button remove_image_button">Remove Image</button>
+        </div>
+        <?php
+    }
+    
+    /**
+     * Add image field to attribute edit form
+     */
+    public function edit_image_field_to_term( $term, $taxonomy ) {
+        $image_id = get_term_meta( $term->term_id, 'attribute_image', true );
+        ?>
+        <tr class="form-field">
+            <th scope="row">
+                <label for="attribute_image"><?php esc_html_e( 'Attribute Image', 'woocommerce-attribute-swatches' ); ?></label>
+            </th>
+            <td>
+                <input type="hidden" id="attribute_image" name="attribute_image" value="<?php echo esc_attr( $image_id ); ?>" />
+                <button class="button upload_image_button">Upload/Add Image</button>
+                <button class="button remove_image_button">Remove Image</button>
+            </td>
+        </tr>
+        <?php
+    }
+    
+    /**
+     * Save image field data
+     */
+    public function save_image_field_to_term( $term_id, $tt_id ) {
+        if ( isset( $_POST['attribute_image'] ) ) {
+            update_term_meta( $term_id, 'attribute_image', sanitize_text_field( $_POST['attribute_image'] ) );
+        }
     }
 }

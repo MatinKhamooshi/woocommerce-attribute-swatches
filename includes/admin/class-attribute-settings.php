@@ -24,6 +24,12 @@ class WCACP_Attribute_Settings {
         // Save display type when attribute is added or edited
         add_action( 'woocommerce_attribute_added', array( $this, 'save_attribute_display_type' ), 10, 2 );
         add_action( 'woocommerce_attribute_updated', array( $this, 'save_attribute_display_type' ), 10, 2 );
+
+        // Add "Image" type to attribute types
+        add_filter( 'woocommerce_attribute_types', function( $types ) {
+            $types['image'] = __( 'Image', 'woocommerce-attribute-swatches' );
+            return $types;
+        });
     }
     
     /**
@@ -37,6 +43,7 @@ class WCACP_Attribute_Settings {
                 <option value="default"><?php esc_html_e( 'Default', 'wc-attribute-swatches' ); ?></option>
                 <option value="color"><?php esc_html_e( 'Color', 'wc-attribute-swatches' ); ?></option>
                 <option value="label"><?php esc_html_e( 'Label', 'wc-attribute-swatches' ); ?></option>
+                <option value="image"><?php esc_html_e( 'Image', 'wc-attribute-swatches' ); ?></option>
             </select>
             <p class="description"><?php esc_html_e( 'Determines how this attribute is displayed on product pages.', 'wc-attribute-swatches' ); ?></p>
         </div>
@@ -63,6 +70,7 @@ class WCACP_Attribute_Settings {
                     <option value="default" <?php selected( $display_type, 'default' ); ?>><?php esc_html_e( 'Default', 'wc-attribute-swatches' ); ?></option>
                     <option value="color" <?php selected( $display_type, 'color' ); ?>><?php esc_html_e( 'Color', 'wc-attribute-swatches' ); ?></option>
                     <option value="label" <?php selected( $display_type, 'label' ); ?>><?php esc_html_e( 'Label', 'wc-attribute-swatches' ); ?></option>
+                    <option value="image" <?php selected( $display_type, 'image' ); ?>><?php esc_html_e( 'Image', 'wc-attribute-swatches' ); ?></option>
                 </select>
                 <p class="description"><?php esc_html_e( 'Determines how this attribute is displayed on product pages.', 'wc-attribute-swatches' ); ?></p>
             </td>
